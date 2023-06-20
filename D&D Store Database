@@ -1,0 +1,26 @@
+--Create a DnD Store Database
+
+CREATE TABLE dnd_store (id INTEGER PRIMARY KEY, name TEXT, stock INTEGER, overhead_price INTEGER, purchase_price INTEGER);
+
+INSERT INTO dnd_store VALUES(1, "DM Guide", 33, 1, 10);
+INSERT INTO dnd_store VALUES(2, "Advanced DM Guide", 33, 1, 10);
+INSERT INTO dnd_store VALUES(3, "Player Guide", 33, 1, 9);
+INSERT INTO dnd_store VALUES(4, "Advanced Player Guide", 33, 1, 9);
+INSERT INTO dnd_store VALUES(5, "Monster Manual", 33, 1, 8);
+INSERT INTO dnd_store VALUES(6, "Advanced Monster Manual", 33, 1, 8);
+INSERT INTO dnd_store VALUES(7, "Custom Dice", 33, 1, 20);
+INSERT INTO dnd_store VALUES(8, "Character Sheets", 33, 1, 5);
+INSERT INTO dnd_store VALUES(9, "Blue Dice", 33, 1, 7);
+INSERT INTO dnd_store VALUES(10, "Red Dice", 33, 1, 3);
+INSERT INTO dnd_store VALUES(11, "Green Dice", 33, 1, 4);
+INSERT INTO dnd_store VALUES(12, "Orange Dice", 33, 1, 6);
+INSERT INTO dnd_store VALUES(13, "Purple Dice", 33, 1, 2);
+INSERT INTO dnd_store VALUES(14, "Clear Dice", 33, 1, 10);
+INSERT INTO dnd_store VALUES(15, "Black Dice", 33, 1, 11);
+
+
+--Display the Database ordered by Purchase Price
+SELECT * FROM dnd_store ORDER BY purchase_price;
+
+--What is the item in the Database with the Highest Purchase Price?
+SELECT name, MAX(purchase_price) FROM dnd_Store;
