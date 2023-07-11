@@ -1,0 +1,67 @@
+/* Table with names of some of my playgroups DnD Characters*/
+CREATE TABLE dnd_characters (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT);
+
+
+INSERT INTO dnd_characters (name) VALUES ("Gedekeis Angmar");
+INSERT INTO dnd_characters (name) VALUES ("Kyler");
+INSERT INTO dnd_characters (name) VALUES ("LC");
+INSERT INTO dnd_characters (name) VALUES ("Judas Alexander");
+INSERT INTO dnd_characters (name) VALUES ("Isaac");
+INSERT INTO dnd_characters (name) VALUES ("Ithrae'El");
+INSERT INTO dnd_characters (name) VALUES ("Cassandra");
+INSERT INTO dnd_characters (name) VALUES ("Odexes");
+INSERT INTO dnd_characters (name) VALUES ("White Dawn");
+INSERT INTO dnd_characters (name) VALUES ("Halvar");
+INSERT INTO dnd_characters (name) VALUES ("Elminster");
+INSERT INTO dnd_characters (name) VALUES ("Kali");
+INSERT INTO dnd_characters (name) VALUES ("Wyn");
+INSERT INTO dnd_characters (name) VALUES ("Davina");
+INSERT INTO dnd_characters (name) VALUES ("Fallon");
+
+
+/* Table with some of my best and worst memories of those DnD Characters*/
+CREATE TABLE memories (id INTEGER PRIMARY KEY AUTOINCREMENT, best_memory TEXT, worst_memory TEXT);
+INSERT INTO memories (best_memory, worst_memory) VALUES ("Fireball into enemy mouth", "Splitting himself into multiple timelines");
+INSERT INTO memories (best_memory, worst_memory) VALUES ("Death by Beholder", "Murder Hobo");
+INSERT INTO memories (best_memory, worst_memory) VALUES ("Snipe enemy off roof", "Always Sulking");
+INSERT INTO memories (best_memory, worst_memory) VALUES ("Rebelling against his God", "Losing to his God");
+INSERT INTO memories (best_memory, worst_memory) VALUES ("Creating Several Clones of Himself", "Betrayed Party");
+INSERT INTO memories (best_memory, worst_memory) VALUES ("Tricking the Party", "Killed by a Vengeful Party");
+INSERT INTO memories (best_memory, worst_memory) VALUES ("Converting Judas", "Didn't help party when they needed it most");
+INSERT INTO memories (best_memory, worst_memory) VALUES ("Taking on a whole bandit camp alone", "Not a team player");
+INSERT INTO memories (best_memory, worst_memory) VALUES ("Gaining Immortality", "Hiding away in a pocket dimmension");
+INSERT INTO memories (best_memory, worst_memory) VALUES ("Winning the jackpot in a gambling den", "Stealing from the party");
+INSERT INTO memories (best_memory, worst_memory) VALUES ("Convincing the bad guy to join the party", "Stopping the final boss fight turn one");
+INSERT INTO memories (best_memory, worst_memory) VALUES ("Gaining a cult following for Ged", "Never saw Ged's flaws");
+INSERT INTO memories (best_memory, worst_memory) VALUES ("Great Party Leader", "Choked at the last minute, killing the party");
+INSERT INTO memories (best_memory, worst_memory) VALUES ("Used Art Magic to paint the sky", "Wandered off an almost died");
+INSERT INTO memories (best_memory, worst_memory) VALUES ("Always trying to one up party memebers", "Left the party when they didn't get what they wanted");
+
+
+/* Table of those DnD Characters ranked from 1-10 how much I liked them*/
+CREATE TABLE ranking (id INTEGER PRIMARY KEY AUTOINCREMENT, fav_rank INTEGER);
+INSERT INTO ranking (fav_rank) VALUES (10);
+INSERT INTO ranking (fav_rank) VALUES (5);
+INSERT INTO ranking (fav_rank) VALUES (7);
+INSERT INTO ranking (fav_rank) VALUES (9);
+INSERT INTO ranking (fav_rank) VALUES (3);
+INSERT INTO ranking (fav_rank) VALUES (7);
+INSERT INTO ranking (fav_rank) VALUES (8);
+INSERT INTO ranking (fav_rank) VALUES (5);
+INSERT INTO ranking (fav_rank) VALUES (6);
+INSERT INTO ranking (fav_rank) VALUES (2);
+INSERT INTO ranking (fav_rank) VALUES (8);
+INSERT INTO ranking (fav_rank) VALUES (10);
+INSERT INTO ranking (fav_rank) VALUES (7);
+INSERT INTO ranking (fav_rank) VALUES (4);
+INSERT INTO ranking (fav_rank) VALUES (6);
+
+
+/* Join Query that looks at each character, my best and worst memeory of them, ordered from least to most memorable*/
+SELECT dnd_characters.name, best_memory, worst_memory, fav_rank AS memorable_character
+    FROM dnd_characters
+    JOIN memories
+    ON memories.id = dnd_characters.id
+    JOIN ranking
+    ON ranking.id = dnd_characters.id
+    ORDER BY fav_rank;
